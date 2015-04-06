@@ -1,0 +1,15 @@
+{
+  "name": "demo",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+  ],
+  "author": "",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#0.5.5",
+    "paper-elements": "Polymer/paper-elements#0.5.5",
+    "google-map": "GoogleWebComponents/google-map",
+    "loqate-cloud": "bumrush/loqate-cloud"
+  }
+}

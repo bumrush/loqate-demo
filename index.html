@@ -1,0 +1,90 @@
+<!doctype html>
+
+<html>
+<head>
+  <title>demo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+
+  <link rel="import" href="bower_components/core-icons/core-icons.html">
+  <link rel="import" href="bower_components/core-input/core-input.html">
+  <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+  <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+  <link rel="import" href="bower_components/core-drawer-panel/core-drawer-panel.html">
+  <link rel="import" href="bower_components/loqate-cloud/loqate-cloud.html">
+  <link rel="import" href="bower_components/google-map/google-map.html">
+
+</head>
+
+<body unresolved>
+  
+  <polymer-element name="loqate-demo">
+    <template>
+      <style>
+        google-map {
+          height: 600px;
+        }
+      </style>
+      
+      <core-drawer-panel>
+        <core-header-panel drawer>
+          <core-toolbar>
+            <div>Application</div>
+          </core-toolbar>
+          
+          <div>
+            <loqate-cloud
+             lqtkey="{{key}}"
+             inputAddress="{{input}}"
+             status="{{status}}"
+             avc="{{avc}}"
+             result="{{result}}"
+             latitude="{{latitude}}"
+             longitude="{{longitude}}">
+            </loqate-cloud>
+            <p>
+              Enter API Key:<br/>
+              <span><input is="core-input" committedValue="{{key}}"></span><br/>
+              <br/>
+              Enter Input Address:<br/>
+              <span><input is="core-input" committedValue="{{input}}"></span><br/>
+            </p>
+          </div>
+          
+        </core-header-panel>
+        <core-header-panel main>
+          <core-toolbar>
+            <core-icon-button icon="menu" core-drawer-toggle></core-icon-button>
+            <div>Title</div>
+          </core-toolbar>
+          
+            <div>
+              <google-map id="map" showCenterMarker></google-map>
+            </div>
+          
+          
+        </core-header-panel>
+      </core-drawer-panel>
+    </template>
+    <script>
+      Polymer('loqate-demo', {
+        latitude: 37.77493,
+        longitude: -122.41942,
+        latitudeChanged: function(oldVal, newVal) {
+          this.$.map.latitude = parseFloat(newVal);
+        },
+        longitudeChanged: function(oldVal, newVal) {
+          this.$.map.longitude = parseFloat(newVal);
+        }
+      });
+    </script>
+  </polymer-element>
+  
+  <loqate-demo></loqate-demo>
+  
+</body>
+</html>
